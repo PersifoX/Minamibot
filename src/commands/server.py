@@ -18,14 +18,15 @@ class Server(Cog):
 
     @server.sub_command("list", description="⭐ | Check Online Players")
     async def list(self, inter):
-        inter.response.send_message(
+
+        await inter.response.send_message(
             embed=DefaultEmbed(description=await self.rcon.exec(command="list"))
         )
 
     @server.sub_command("version", description="Check Server Version")
     async def version(self, inter):
-        inter.response.send_message(
-            "```\n" + self.rcon.exec(command="version") + "\n```"
+        await inter.response.send_message(
+            "```\n" + await self.rcon.exec(command="version") + "\n```"
         )
 
     # @has_role(get_settings().role_id)
