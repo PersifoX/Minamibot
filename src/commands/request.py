@@ -67,9 +67,8 @@ class Request(Cog):
 
         if player.approved:
             return await inter.send(
-                embed=DefaultEmbed(
-                    description="Player already approved", ephemeral=quiet
-                )
+                embed=DefaultEmbed(description="Player already approved"),
+                ephemeral=quiet,
             )
 
         player.approved = True
