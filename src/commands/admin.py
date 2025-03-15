@@ -22,7 +22,7 @@ class Admin(Cog):
     @admin.sub_command(name="command", description="⭐ | Run a command on Server")
     async def command(self, inter, command: str):
         await inter.response.send_message(
-            await self._whitelist.exec(command) or "*Nothing to response*"
+            (await self._whitelist.exec(command)) or "*Nothing to response*"
         )
 
     @admin.sub_command_group(name="whitelist")
