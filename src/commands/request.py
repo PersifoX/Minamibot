@@ -90,7 +90,7 @@ class Request(Cog):
         )
 
     @has_role(get_settings().role_id)
-    @user_command("approve")
+    @user_command(name="approve")
     async def approve_user(self, inter, member: disnake.Member):
         await self.approve(inter, member, quiet=True)
 
@@ -136,7 +136,7 @@ class Request(Cog):
         )
 
     @has_role(get_settings().role_id)
-    @user_command("decline")
+    @user_command(name="decline")
     async def decline_user(self, inter, member: disnake.Member):
         await self.decline(inter, member, quiet=True)
 
