@@ -46,7 +46,7 @@ class Request(Cog):
             else "**No requests yet!**"
         )
 
-        await inter.response.send(
+        await inter.response.send_message(
             embed=DefaultEmbed(
                 title="Declined and new requests",
                 description=formatted,

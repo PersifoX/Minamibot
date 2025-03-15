@@ -94,7 +94,7 @@ class ModalRequest(disnake.ui.Modal):
             )
         )
 
-        await inter.send_message(
+        await inter.send(
             embed=DefaultEmbed(
                 description="Заявка отправлена. В скором времени она будет рассмотрена, ожидайте!"
             ),

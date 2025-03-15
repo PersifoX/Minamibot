@@ -11,7 +11,7 @@ class Ping(Cog):
 
     @slash_command(name="ping", description="Ping the bot")
     async def ping(self, inter):
-        await inter.response.send(f"Pong! `{self.bot.latency * 1000:.2f}ms`")
+        await inter.response.send_message(f"Pong! `{self.bot.latency * 1000:.2f}ms`")
 
 
 def setup(bot: InteractionBot) -> None:
