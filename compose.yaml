@@ -32,7 +32,7 @@ services:
     expose:
       - 27017
     volumes:
-      - mongo_data:/database/src
+      - mongo_data:/data/db
       - ./database/mongod.conf:/etc/mongo/mongod.conf
     command: ["mongod", "--config", "/etc/mongo/mongod.conf"]
     networks:
