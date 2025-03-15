@@ -43,7 +43,7 @@ class Ping(Cog):
         if inter.component.custom_id != "request_event":
             return
 
-        await inter.response.send_message(
+        await inter.response.send(
             embed=DefaultEmbed(
                 description="Прочтите правила и нажмите ✅. Если вы ошиблись в заявке или ее отклонили, вы можете повторно отправить заявку."
             ),

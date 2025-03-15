@@ -25,7 +25,7 @@ class Admin(Cog):
     @has_role(get_settings().role_id)
     @whitelist.sub_command("list", description="⭐ |List whitelisted players")
     async def whitelist_list(self, inter):
-        await inter.response.send_message(
+        await inter.response.send(
             DefaultEmbed(description=await self._whitelist.list())
         )
 
