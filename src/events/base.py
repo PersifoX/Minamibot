@@ -27,7 +27,7 @@ class Ping(Cog):
 
     @Cog.listener()
     async def on_slash_command_error(self, inter, error):
-        logger.exception(error)
+        logger.exception(error, exc_info=error)
 
         await inter.send(
             embed=Embed(
