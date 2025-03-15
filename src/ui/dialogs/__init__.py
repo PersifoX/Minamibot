@@ -2,7 +2,6 @@ import disnake
 
 from config import get_settings
 from models.db import Player
-from ui.contexts import DefaultEmbed
 
 
 class ModalRequest(disnake.ui.Modal):
@@ -60,6 +59,8 @@ class ModalRequest(disnake.ui.Modal):
         ).save()
 
         channel = inter.guild.get_channel(get_settings().channel_id)
+
+        from ui.contexts import DefaultEmbed
 
         await channel.send(
             embed=DefaultEmbed(
