@@ -1,7 +1,10 @@
 import disnake
 
+from _logging import get_logger
 from config import get_settings
 from models.db import Player
+
+logger = get_logger(__name__)
 
 
 class ModalRequest(disnake.ui.Modal):
@@ -61,7 +64,8 @@ class ModalRequest(disnake.ui.Modal):
                 reason=values[3],
             ).save()
 
-        except:
+        except Exception as error:
+            logger.exception(error, exc_info=error)
             return await inter.send(
                 embed=WarningEmbed(description="Неверные данные"), ephemeral=True
             )
