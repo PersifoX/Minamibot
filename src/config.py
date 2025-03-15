@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     channel_id: int | None = None
     role_id: int | None = None
 
+    db_url: str = "mongodb://localhost:27017"
+
     model_config = SettingsConfigDict(env_file=".env")
 
 
