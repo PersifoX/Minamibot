@@ -14,10 +14,11 @@ services:
       - .env
     build:
       context: ./src
-    networks:
-      - app-network
+    # networks:
+    #   - app-network
     # extra_hosts:
     #   - "host.docker.internal:172.17.0.1"
+    network_mode: host
     depends_on:
       - mongodb
 
@@ -37,14 +38,16 @@ services:
       - mongo_data:/data/db
       - ./database/mongod.conf:/etc/mongo/mongod.conf
     command: ["mongod", "--config", "/etc/mongo/mongod.conf"]
-    networks:
-      - app-network
+    ports:
+      - 27017:27017
+    # networks:
+    #   - app-network
 
 # ============================ VOLS + NETWORK ========================
 
-networks:
-  app-network:
-    driver: host
+# networks:
+#   app-network:
+#     driver: host
 
 volumes:
   mongo_data:
