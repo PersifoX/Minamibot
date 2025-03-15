@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  # ============================ NGINX + SSL ===========================
+
+  # NGINX
+
+  # ============================ DASHBOARD ==========================
+
+  # ============================ BACKEND ==============================
+
+  backend:
+    env_file:
+      - .env
+    build:
+      context: ./src
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+
+  # ============================ FRONTEND ==============================
+
+  # ============================ DOCS ==================================
+
+  # ============================ DB + CACHE ============================
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    env_file: .env
+    expose:
+      - 27017
+    volumes:
+      - mongo_data:/database/src
+      - ./database/mongod.conf:/etc/mongo/mongod.conf
+    command: ["mongod", "--config", "/etc/mongo/mongod.conf"]
+    networks:
+      - app-network
+
+# ============================ VOLS + NETWORK ========================
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo_data:

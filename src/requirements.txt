@@ -1,0 +1,7 @@
+colorama
+disnake
+pyfiglet
+motor
+beanie
+rcon
+pydantic
