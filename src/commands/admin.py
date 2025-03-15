@@ -21,7 +21,9 @@ class Admin(Cog):
     @has_role(get_settings().role_id)
     @admin.sub_command(name="command", description="⭐ | Run a command on Server")
     async def command(self, inter, command: str):
-        self._whitelist.exec(command)
+        await inter.response.send_message(
+            await self._whitelist.exec(command) or "*Nothing to response*"
+        )
 
     @admin.sub_command_group(name="whitelist")
     async def whitelist(self, inter):
