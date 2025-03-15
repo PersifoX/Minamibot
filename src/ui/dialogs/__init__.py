@@ -50,17 +50,23 @@ class ModalRequest(disnake.ui.Modal):
 
         values = list(inter.text_values.values())
 
-        await Player(
-            id=inter.user.id,
-            username=values[0],
-            age=values[1],
-            license=values[2],
-            reason=values[3],
-        ).save()
+        from ui.contexts import DefaultEmbed, WarningEmbed
+
+        try:
+            await Player(
+                id=int(inter.user.id),
+                username=values[0],
+                age=int(values[1]),
+                license=bool(values[2]),
+                reason=values[3],
+            ).save()
+
+        except:
+            return await inter.send(
+                embed=WarningEmbed(description="Неверные данные"), ephemeral=True
+            )
 
         channel = inter.guild.get_channel(get_settings().channel_id)
-
-        from ui.contexts import DefaultEmbed
 
         await channel.send(
             embed=DefaultEmbed(

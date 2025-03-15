@@ -81,9 +81,6 @@ class RequestView(View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @button(
-        emoji="✅",
-        style=disnake.ButtonStyle.green,
-    )
+    @button(emoji="✅")
     async def open_request(self, button, interaction):
         await interaction.response.send_modal(ModalRequest())
