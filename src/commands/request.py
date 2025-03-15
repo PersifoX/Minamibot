@@ -56,7 +56,7 @@ class Request(Cog):
     @has_role(get_settings().role_id)
     @request.sub_command("approve", description="Approve request on Minami")
     async def approve(self, inter, member: disnake.Member, quiet: bool = False):
-        await inter.response.defer()
+        await inter.response.defer(ephemeral=quiet)
 
         player = await Player.get(member.id)
 
@@ -98,7 +98,7 @@ class Request(Cog):
     async def decline(
         self, inter, member: disnake.Member, reason: str = None, quiet: bool = False
     ):
-        await inter.response.defer()
+        await inter.response.defer(ephemeral=quiet)
 
         player = await Player.get(member.id)
 
@@ -142,13 +142,15 @@ class Request(Cog):
 
     @has_role(get_settings().role_id)
     @request.sub_command("find", description="Find request on Minami")
-    async def find(self, inter, member: disnake.Member):
-        await inter.response.defer()
+    async def find(self, inter, member: disnake.Member, quiet: bool = False):
+        await inter.response.defer(ephemeral=quiet)
 
         player = await Player.get(member.id)
 
         if not player:
-            return await inter.send(embed=WarningEmbed(description="Player not found"))
+            return await inter.send(
+                embed=WarningEmbed(description="Player not found"), ephemeral=quiet
+            )
 
         embed = DefaultEmbed(title=player.username)
 
@@ -169,13 +171,15 @@ class Request(Cog):
 
     @has_role(get_settings().role_id)
     @request.sub_command("remove", description="Remove request on Minami")
-    async def remove(self, inter, member: disnake.Member):
-        await inter.response.defer()
+    async def remove(self, inter, member: disnake.Member, quiet: bool = False):
+        await inter.response.defer(ephemeral=quiet)
 
         player = await Player.get(member.id)
 
         if not player:
-            return await inter.send(embed=WarningEmbed(description="Player not found"))
+            return await inter.send(
+                embed=WarningEmbed(description="Player not found"), ephemeral=quiet
+            )
 
         await player.delete()
 
