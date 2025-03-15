@@ -83,7 +83,7 @@ class ModalRequest(disnake.ui.Modal):
             )
             .set_thumbnail(url=inter.user.display_avatar.url)
             .add_field(
-                name="Имя",
+                name="Никнейм",
                 value=values[0],
             )
             .add_field(
@@ -92,7 +92,7 @@ class ModalRequest(disnake.ui.Modal):
             )
             .add_field(
                 name="Лицензия",
-                value=values[2],
+                value="да" if values[2] else "нет",
             )
             .add_field(
                 name="Причина",
