@@ -111,8 +111,8 @@ class Request(Cog):
             return await inter.send(
                 embed=DefaultEmbed(
                     description="Player already has a decline or approval",
-                    ephemeral=quiet,
-                )
+                ),
+                ephemeral=quiet,
             )
 
         player.declined = True
