@@ -18,6 +18,11 @@ class Admin(Cog):
     async def admin(self, inter):
         pass
 
+    @has_role(get_settings().role_id)
+    @admin.sub_command(name="command", description="⭐ | Run a command on Server")
+    async def command(self, inter, command: str):
+        self._whitelist.exec(command)
+
     @admin.sub_command_group(name="whitelist")
     async def whitelist(self, inter):
         pass

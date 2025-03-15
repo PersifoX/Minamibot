@@ -5,7 +5,7 @@ from _logging import get_logger
 logger = get_logger(__name__)
 
 
-class Ping(Cog):
+class Help(Cog):
     def __init__(self, bot: InteractionBot):
         self.bot = bot
 
@@ -15,4 +15,4 @@ class Ping(Cog):
 
 
 def setup(bot: InteractionBot) -> None:
-    bot.add_cog(Ping(bot), override=True)
+    bot.add_cog(Help(bot), override=True)
