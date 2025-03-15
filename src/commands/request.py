@@ -80,6 +80,11 @@ class Request(Cog):
             embed=DefaultEmbed(description="Player approved"), ephemeral=quiet
         )
 
+        role = member.guild.get_role(get_settings().customer_role_id)
+
+        await member.add_roles(role)
+        await member.edit(nick=player.username)
+
         await member.create_dm()
         await member.dm_channel.send(
             embed=DefaultEmbed(

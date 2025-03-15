@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     guild_id: int
     channel_id: int | None = None
     role_id: int | None = None
+    customer_role_id: int | None = None
 
     db_url: str
 
