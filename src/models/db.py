@@ -14,6 +14,6 @@ class Player(Document):
     # ~~~~~~~~~~~~~~~~~~~
     approved: bool = False
     declined: bool = False
-    decline_reason: str = None
+    decline_reason: str | None = None
     # ~~~~~~~~~~~~~~~~~~~
     created_at: datetime = Field(default_factory=datetime.now)
