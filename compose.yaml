@@ -16,6 +16,8 @@ services:
       context: ./src
     networks:
       - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - mongodb
 
