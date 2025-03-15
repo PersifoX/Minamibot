@@ -16,4 +16,4 @@ class Player(Document):
     declined: bool = False
     decline_reason: str | None = None
     # ~~~~~~~~~~~~~~~~~~~
-    created_at: datetime = Field(default_factory=datetime.now)
+    created_at: datetime = Field(default_factory=datetime.now().timestamp)

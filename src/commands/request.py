@@ -107,10 +107,11 @@ class Request(Cog):
                 embed=WarningEmbed(description="Player not found"), ephemeral=quiet
             )
 
-        if player.declined:
+        if player.declined or player.approved:
             return await inter.send(
                 embed=DefaultEmbed(
-                    description="Player already declined", ephemeral=quiet
+                    description="Player already has a decline or approval",
+                    ephemeral=quiet,
                 )
             )
 
@@ -165,6 +166,20 @@ class Request(Cog):
         )
 
         await inter.send(embed=embed)
+
+    @has_role(get_settings().role_id)
+    @request.sub_command("remove", description="Remove request on Minami")
+    async def remove(self, inter, member: disnake.Member):
+        await inter.response.defer()
+
+        player = await Player.get(member.id)
+
+        if not player:
+            return await inter.send(embed=WarningEmbed(description="Player not found"))
+
+        await player.delete()
+
+        await inter.send(embed=DefaultEmbed(description="Player removed"))
 
     @has_role(get_settings().role_id)
     @request.sub_command(
