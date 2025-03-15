@@ -53,4 +53,4 @@ class Ping(Cog):
 
 
 def setup(bot: InteractionBot) -> None:
-    bot.add_cog(Ping(), override=True)
+    bot.add_cog(Ping(bot), override=True)
