@@ -30,7 +30,7 @@ class ModalRequest(disnake.ui.Modal):
                 style=disnake.TextInputStyle.short,
             ),
             disnake.ui.TextInput(
-                label="Лицензионная версия? (оставьте пустым, если нет)",
+                label="Лицензия? (оставьте пустым, если нет)",
                 placeholder="нет",
                 custom_id="license",
                 style=disnake.TextInputStyle.short,
