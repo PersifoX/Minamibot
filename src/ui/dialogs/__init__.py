@@ -30,8 +30,8 @@ class ModalRequest(disnake.ui.Modal):
                 style=disnake.TextInputStyle.short,
             ),
             disnake.ui.TextInput(
-                label="Лицензионная версия? (по умолчанию нет)",
-                placeholder="да",
+                label="Лицензионная версия? (оставьте пустым, если нет)",
+                placeholder="нет",
                 custom_id="license",
                 style=disnake.TextInputStyle.short,
                 required=False,
@@ -92,7 +92,7 @@ class ModalRequest(disnake.ui.Modal):
             )
             .add_field(
                 name="Лицензия",
-                value="да" if values[2] else "нет",
+                value=values[2] or "нет",
             )
             .add_field(
                 name="Причина",
